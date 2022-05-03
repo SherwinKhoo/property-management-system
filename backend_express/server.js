@@ -37,7 +37,12 @@ app.use(express.urlencoded({ extended: false }));
 
 connectDB(process.env.MONGODB_URI);
 
-app.use("/users", users);
+const usersController = require("./router/usersController.js");
+app.use("users", usersController);
+const reservationsController = require("./router/reservationsController");
+app.use("/reservations", reservationsController);
+const sessionsController = require("./router/sessionsController");
+app.use("/sessions", sessionsController);
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
