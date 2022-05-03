@@ -49,38 +49,32 @@ router.get("/seed", async (req, res) => {
   const newUsers = [
     {
       email: "admin@email.com",
-      password: "example",
       firstName: "Admin",
       lastName: "User",
       isStaff: true,
     },
     {
       email: "guest1@email.com",
-      password: "example",
       firstName: "Guest1",
       lastName: "One",
     },
     {
       email: "guest2@email.com",
-      password: "example",
       firstName: "Guest2",
       lastName: "Two",
     },
     {
       email: "guest3@email.com",
-      password: "example",
       firstName: "Guest3",
       lastName: "Three",
     },
     {
       email: "guest4@email.com",
-      password: "example",
       firstName: "Guest4",
       lastName: "Four",
     },
     {
       email: "guest5@email.com",
-      password: "example",
       firstName: "Guest5",
       lastName: "Five",
     },

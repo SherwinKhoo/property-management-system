@@ -7,7 +7,8 @@ const reservationsSchema = Schema({
   endDate: { type: Date, required: true },
   rooms: [{ type: Number, required: true }],
   payments: [{ type: Number, required: true }],
-  userEmail: { type: Schema.Types.ObjectId, ref: "usersModel" },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
 });
 
 const Reservations = mongoose.model("Reservations", reservationsSchema);

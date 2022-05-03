@@ -35,11 +35,11 @@ mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
-const usersController = require("./router/usersController");
-// const reservationsController = require("./router/reservationsController");
-const sessionsController = require("./router/sessionsController");
+const usersController = require("./router/usersController.js");
+const reservationsController = require("./router/reservationsController.js");
+const sessionsController = require("./router/sessionsController.js");
 app.use("/users", usersController);
-// app.use("/reservations", reservationsController);
+app.use("/reservations", reservationsController);
 app.use("/sessions", sessionsController);
 
 app.listen(PORT, () => {
