@@ -28,8 +28,8 @@ router.post("/new", async (req, res) => {
   }
 });
 
-// modify reservation
-router.put("/:id/modify", async (req, res) => {
+// udpate reservation
+router.put("/:id/update", async (req, res) => {
   try {
     const modifyReservation = await Reservations.updateOne(
       {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarReservations from "../navigation/NavBarReservations.js";
 
-const NewReservation = () => {
+const UpdateReservation = () => {
   const [resID, setResID] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -12,11 +12,17 @@ const NewReservation = () => {
 
   let navigate = useNavigate();
 
-  const requestOptions = {
-    method: "POST",
+  const searchReservation = async (id) => {
+    const url = `http://127.0.0.1:5001/reservations/${id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const requestOptionsUpdate = {
+    method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      reservationID: resID,
       startDate: start,
       endDate: end,
       rooms: rms,
@@ -25,16 +31,21 @@ const NewReservation = () => {
     }),
   };
 
-  const newReservation = async () => {
-    const url = `http://127.0.0.1:5001/reservations/new`;
-    const response = await fetch(url, requestOptions);
+  const updateReservation = async (id) => {
+    const url = `http://127.0.0.1:5001/reservations/${id}/update`;
+    const response = await fetch(url, requestOptionsUpdate);
     const data = await response.json();
     console.log(data);
   };
 
-  const submitNewReservation = (event) => {
+  const handleSearch = (event) => {
     event.preventDefault();
-    newReservation();
+    searchReservation(resID);
+  };
+
+  const submitUpdateReservation = (event) => {
+    event.preventDefault();
+    updateReservation();
   };
 
   const handleResIDChange = (event) => {
@@ -66,7 +77,7 @@ const NewReservation = () => {
       <div className="col-md-3">
         <NavBarReservations />
       </div>
-      <form className="col-md-9 content" onSubmit={submitNewReservation}>
+      <form className="col-md-9 content" onSubmit={submitUpdateReservation}>
         <div className="row">
           <label className="col-md-3">Reservation ID</label>
           <input className="col-md-9" onChange={handleResIDChange}></input>
@@ -92,9 +103,12 @@ const NewReservation = () => {
           <input className="col-md-9" onChange={handleLastChange}></input>
         </div>
         <div className="row">
-          <div className="col-md-8"></div>
+          <div className="col-md-6"></div>
+          <button type="button" onclick={handleSearch} className="col-md-2 btn">
+            Search
+          </button>
           <button type="submit" className="col-md-2 btn">
-            Submit
+            Update
           </button>
           <button type="button" className="col-md-2 btn">
             Cancel
@@ -105,4 +119,4 @@ const NewReservation = () => {
   );
 };
 
-export default NewReservation;
+export default UpdateReservation;

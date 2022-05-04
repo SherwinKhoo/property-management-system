@@ -17,6 +17,6 @@ body {
 
 .content {
   background: lightgrey;
-  height: 30rem;
+  /* height: 30rem; */
   padding: 2rem;
 }
