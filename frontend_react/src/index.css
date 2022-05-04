@@ -12,5 +12,11 @@ body {
 }
 
 .leftNav {
-  width: 7rem;
+  width: 100%;
+}
+
+.content {
+  background: lightgrey;
+  height: 30rem;
+  padding: 2rem;
 }

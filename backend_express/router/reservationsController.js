@@ -28,7 +28,7 @@ router.post("/new", async (req, res) => {
   }
 });
 
-// amend reservation
+// modify reservation
 router.put("/:id/modify", async (req, res) => {
   try {
     const modifyReservation = await Reservations.updateOne(
