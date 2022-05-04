@@ -4,7 +4,7 @@ const Reservations = require("../models/reservationsModel");
 const router = express.Router();
 
 // search for reservation
-router.get("/reservations/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const findReservation = await Reservations.find({
       reservationID: req.params.id,
