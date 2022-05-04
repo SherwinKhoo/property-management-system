@@ -6,9 +6,11 @@ const reservationsSchema = Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   rooms: [{ type: Number, required: true }],
-  payments: [{ type: Number, required: true }],
+  payments: [{ type: Number }],
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
+  isCancelled: { type: Boolean, required: true, default: false },
+  isCheckedIn: { type: Boolean, required: true, default: false },
 });
 
 const Reservations = mongoose.model("Reservations", reservationsSchema);
