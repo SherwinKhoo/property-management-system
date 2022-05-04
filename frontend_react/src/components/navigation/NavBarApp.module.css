@@ -1,0 +1,42 @@
+.navbar {
+  background-color: rgb(200, 200, 200);
+}
+
+.navbar nav {
+  height: 5rem;
+}
+
+.navbar ul {
+  height: 5rem;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar li {
+  margin: 0 1rem;
+  width: 10rem;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+/* .navbar a:active,
+.navbar a.active {
+  color: white;
+  padding: 0.25rem;
+  border-bottom: 4px solid rgb(255, 153, 0);
+} */
+
+/* .navbar a:hover {
+  border: 2px solid white;
+  border-radius: 15px;
+} */
