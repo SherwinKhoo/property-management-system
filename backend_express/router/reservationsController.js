@@ -3,19 +3,6 @@ const mongoose = require("mongoose");
 const Reservations = require("../models/reservationsModel");
 const router = express.Router();
 
-// search for reservation
-router.get("/:id", async (req, res) => {
-  try {
-    const findReservation = await Reservations.find({
-      reservationID: req.params.id,
-    });
-    res.json(findReservation);
-  } catch (error) {
-    console.log(error);
-    res.json("error");
-  }
-});
-
 // search for arrivals
 router.get("/arrivals/:date", async (req, res) => {
   try {
@@ -41,7 +28,7 @@ router.post("/new", async (req, res) => {
   }
 });
 
-// udpate reservation
+// update reservation
 router.put("/:id/update", async (req, res) => {
   try {
     const modifyReservation = await Reservations.updateOne(
@@ -85,6 +72,20 @@ router.put("/:id/checkin", async (req, res) => {
   }
 });
 
+// search for inhouse
+router.get("/inhouse", async (req, res) => {
+  console.log("backend called");
+  try {
+    const findInHouse = await Reservations.find({
+      isCheckedIn: true,
+    });
+    res.json(findInHouse);
+  } catch (error) {
+    console.log(error);
+    res.json("error");
+  }
+});
+
 // cancel reservation
 router.put("/:id/cancel", async (req, res) => {
   try {
@@ -98,6 +99,19 @@ router.put("/:id/cancel", async (req, res) => {
     );
     console.log(cancelReservation);
     res.json(cancelReservation);
+  } catch (error) {
+    console.log(error);
+    res.json("error");
+  }
+});
+
+// search for reservation
+router.get("/:id", async (req, res) => {
+  try {
+    const findReservation = await Reservations.find({
+      reservationID: req.params.id,
+    });
+    res.json(findReservation);
   } catch (error) {
     console.log(error);
     res.json("error");

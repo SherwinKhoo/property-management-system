@@ -78,7 +78,7 @@ const Arrivals = () => {
       firstName: first,
       lastName: last,
       isCancelled: cancel,
-      isCheckedIn: checkInOut,
+      isCheckedIn: true,
     }),
   };
 
@@ -213,7 +213,7 @@ const Arrivals = () => {
             <label className="col-md-3">Rooms</label>
             <input
               className="col-md-9"
-              defaultValue={rms}
+              value={rms}
               onChange={handleRmsChange}
             ></input>
           </div>
@@ -221,7 +221,7 @@ const Arrivals = () => {
             <label className="col-md-3">First Name</label>
             <input
               className="col-md-9"
-              defaultValue={first}
+              value={first}
               onChange={handleFirstChange}
             ></input>
           </div>
@@ -229,7 +229,7 @@ const Arrivals = () => {
             <label className="col-md-3">Last Name</label>
             <input
               className="col-md-9"
-              defaultValue={last}
+              value={last}
               onChange={handleLastChange}
             ></input>
           </div>
