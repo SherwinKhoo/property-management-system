@@ -20,3 +20,7 @@ body {
   /* height: 30rem; */
   padding: 2rem;
 }
+
+.content div {
+  margin: 1rem 0;
+}
