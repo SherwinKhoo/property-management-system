@@ -72,11 +72,11 @@ const NewReservation = () => {
           <input className="col-md-9" onChange={handleResIDChange}></input>
         </div>
         <div className="row">
-          <label className="col-md-3">Check-In Date</label>
+          <label className="col-md-3">Arrival</label>
           <input className="col-md-9" onChange={handleStartChange}></input>
         </div>
         <div className="row">
-          <label className="col-md-3">Check-Out Date</label>
+          <label className="col-md-3">Departure</label>
           <input className="col-md-9" onChange={handleEndChange}></input>
         </div>
         <div className="row">

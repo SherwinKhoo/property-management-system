@@ -1,7 +1,7 @@
 import React from "react";
 import NavBarReservations from "../navigation/NavBarReservations.js";
 
-const ReservationsContainer = () => {
+const Reservations = () => {
   return (
     <div className="row">
       <div className="col-md-3">
@@ -12,4 +12,4 @@ const ReservationsContainer = () => {
   );
 };
 
-export default ReservationsContainer;
+export default Reservations;

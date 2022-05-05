@@ -1,12 +1,14 @@
 import React, { Suspense } from "react";
 import { Route, Navigate, Routes, useNavigate } from "react-router-dom";
-
 import NavBarApp from "./components/navigation/NavBarApp";
-// import ReservationsContainer from "./components/reservations/ReservationsContainer";
+
+// import Reservations from "./components/reservations/Reservations";
 // import NewReservation from "./components/reservations/NewReservation";
 // import UpdateReservation from "./components/reservations/UpdateReservation";
-const ReservationsContainer = React.lazy(() =>
-  import("./components/reservations/ReservationsContainer")
+// import FrontDesk from "./components/front_desk/FrontDesk";
+
+const Reservations = React.lazy(() =>
+  import("./components/reservations/Reservations")
 );
 const NewReservation = React.lazy(() =>
   import("./components/reservations/NewReservation")
@@ -14,6 +16,8 @@ const NewReservation = React.lazy(() =>
 const UpdateReservation = React.lazy(() =>
   import("./components/reservations/UpdateReservation")
 );
+const FrontDesk = React.lazy(() => import("./components/front_desk/FrontDesk"));
+const Arrivals = React.lazy(() => import("./components/front_desk/Arrivals"));
 
 const App = () => {
   let navigate = useNavigate();
@@ -24,9 +28,11 @@ const App = () => {
       <Suspense fallback={<p>loading...</p>}>
         <Routes>
           <Route path="/" element={<Navigate replace to="reservations" />} />
-          <Route path="/reservations" element={<ReservationsContainer />} />
+          <Route path="/reservations" element={<Reservations />} />
           <Route path="/new-reservation" element={<NewReservation />} />
           <Route path="/update-reservation" element={<UpdateReservation />} />
+          <Route path="/front-desk" element={<FrontDesk />} />
+          <Route path="/arrivals" element={<Arrivals />} />
         </Routes>
       </Suspense>
     </div>

@@ -1,17 +1,32 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import NavBarReservations from "../navigation/NavBarReservations.js";
+import React, { useEffect, useState } from "react";
+import NavBarFrontDesk from "../navigation/NavBarFrontDesk.js";
 
-const UpdateReservation = () => {
+const Arrivals = () => {
   const [resID, setResID] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [pay, setPay] = useState([]);
   const [rms, setRms] = useState([]);
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [cancel, setCancel] = useState(false);
+  const [checkInOut, setCheckInOut] = useState(false);
 
-  let navigate = useNavigate();
+  const [arrivals, setArrivals] = useState([]);
+
+  const searchArrivals = async (date) => {
+    console.log(date);
+    try {
+      const url = `http://127.0.0.1:5001/reservations/arrivals/${date}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+      console.log(typeof data);
+      setArrivals(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const searchReservation = async (id) => {
     try {
@@ -19,12 +34,14 @@ const UpdateReservation = () => {
       const response = await fetch(url);
       const data = await response.json();
       console.log(data);
+      setResID(data[0].reservationID);
       setStart(data[0].startDate);
       setEnd(data[0].endDate);
       setRms(data[0].rooms);
       setFirst(data[0].firstName);
       setLast(data[0].lastName);
       setCancel(data[0].isCancelled);
+      setCheckInOut(data[0].isCheckedIn);
     } catch (error) {
       console.log(error);
     }
@@ -49,20 +66,6 @@ const UpdateReservation = () => {
     console.log(data);
   };
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    searchReservation(resID);
-  };
-
-  const submitUpdateReservation = (event) => {
-    event.preventDefault();
-    updateReservation();
-  };
-
-  const handleResIDChange = (event) => {
-    setResID(event.target.value);
-  };
-
   const handleStartChange = (event) => {
     setStart(event.target.value);
   };
@@ -83,28 +86,58 @@ const UpdateReservation = () => {
     setLast(event.target.value);
   };
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log(event.target);
+    searchArrivals(start);
+  };
+
+  const handleResIDSearch = (event) => {
+    event.preventDefault();
+    console.log("asdfg");
+    searchReservation(event.target.innerText);
+  };
+
+  const arrivalList = arrivals.map((list, index) => {
+    return (
+      <tr className="row">
+        <td className="col-md-2" onClick={handleResIDSearch}>
+          {list.reservationID}
+        </td>
+        <td className="col-md-2">{list.startDate.substring(0, 10)}</td>
+        <td className="col-md-2">{list.endDate.substring(0, 10)}</td>
+        <td className="col-md-2">{list.rooms}</td>
+        <td className="col-md-2">{list.firstName}</td>
+        <td className="col-md-2">{list.lastName}</td>
+      </tr>
+    );
+  });
+
   return (
     <div className="row">
       <div className="col-md-3">
-        <NavBarReservations />
+        <NavBarFrontDesk />
       </div>
       <div className="col-md-9 content">
-        <form className="row">
-          <label className="col-md-3">Reservation ID</label>
-          <input className="col-md-7" onChange={handleResIDChange}></input>
-          <button className="col-md-2 btn" type="button" onClick={handleSearch}>
+        <form className="row" onSubmit={handleSearch}>
+          <label className="col-md-4">Search Arrival Date</label>
+          <input className="col-md-6" onChange={handleStartChange}></input>
+          <button className="col-md-2 btn" type="submit">
             Search
           </button>
         </form>
         <br />
         <br />
-        <br />
-        <form onSubmit={submitUpdateReservation}>
+        <form>
+          <div className="row">
+            <label className="col-md-3">Reservation ID</label>
+            <input className="col-md-9" value={resID}></input>
+          </div>
           <div className="row">
             <label className="col-md-3">Arrival</label>
             <input
               className="col-md-9"
-              value={start}
+              value={start.substring(0, 10)}
               onChange={handleStartChange}
             ></input>
           </div>
@@ -112,7 +145,7 @@ const UpdateReservation = () => {
             <label className="col-md-3">Departure</label>
             <input
               className="col-md-9"
-              value={end}
+              value={end.substring(0, 10)}
               onChange={handleEndChange}
             ></input>
           </div>
@@ -141,21 +174,29 @@ const UpdateReservation = () => {
             ></input>
           </div>
           <div className="row">
-            <div className="col-md-4"></div>
+            <div className="col-md-8"></div>
             <button type="submit" className="col-md-2 btn">
-              Update
+              Check-In
             </button>
             <button type="button" className="col-md-2 btn">
-              Undo
-            </button>
-            <button type="button" className="col-md-4 btn">
-              Cancel Reservation
+              Cancel
             </button>
           </div>
         </form>
+        <br />
+        <br />
+        <tr className="row">
+          <th className="col-md-2">ID</th>
+          <th className="col-md-2">ARRIVAL</th>
+          <th className="col-md-2">DEPARTURE</th>
+          <th className="col-md-2">ROOM</th>
+          <th className="col-md-2">FIRST NAME</th>
+          <th className="col-md-2">LAST NAME</th>
+        </tr>
+        <>{arrivalList}</>
       </div>
     </div>
   );
 };
 
-export default UpdateReservation;
+export default Arrivals;

@@ -16,6 +16,19 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// search for arrivals
+router.get("/arrivals/:date", async (req, res) => {
+  try {
+    const findArrivals = await Reservations.find({
+      startDate: `${req.params.date}T00:00:00.000+00:00`,
+    }).sort({ lastName: +1 });
+    res.json(findArrivals);
+  } catch (error) {
+    console.log(error);
+    res.json("error");
+  }
+});
+
 // create new reservation
 router.post("/new", async (req, res) => {
   try {
