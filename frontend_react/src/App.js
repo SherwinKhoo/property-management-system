@@ -6,6 +6,7 @@ import NavBarApp from "./components/navigation/NavBarApp";
 // import NewReservation from "./components/reservations/NewReservation";
 // import UpdateReservation from "./components/reservations/UpdateReservation";
 // import FrontDesk from "./components/front_desk/FrontDesk";
+// import InHouseGuests from "./components/front_desk/InHouseGuests";
 
 const Reservations = React.lazy(() =>
   import("./components/reservations/Reservations")
@@ -18,6 +19,9 @@ const UpdateReservation = React.lazy(() =>
 );
 const FrontDesk = React.lazy(() => import("./components/front_desk/FrontDesk"));
 const Arrivals = React.lazy(() => import("./components/front_desk/Arrivals"));
+const InHouseGuests = React.lazy(() =>
+  import("./components/front_desk/InHouseGuests")
+);
 
 const App = () => {
   let navigate = useNavigate();
@@ -33,6 +37,7 @@ const App = () => {
           <Route path="/update-reservation" element={<UpdateReservation />} />
           <Route path="/front-desk" element={<FrontDesk />} />
           <Route path="/arrivals" element={<Arrivals />} />
+          <Route path="/inhouse-guests" element={<InHouseGuests />} />
         </Routes>
       </Suspense>
     </div>

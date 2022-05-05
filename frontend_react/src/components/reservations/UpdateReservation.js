@@ -39,14 +39,20 @@ const UpdateReservation = () => {
       rooms: rms,
       firstName: first,
       lastName: last,
+      isCancelled: false,
+      isCheckedIn: false,
     }),
   };
 
-  const updateReservation = async () => {
-    const url = `http://127.0.0.1:5001/reservations/${resID}/update`;
-    const response = await fetch(url, requestOptionsUpdate);
-    const data = await response.json();
-    console.log(data);
+  const updateReservation = async (id) => {
+    try {
+      const url = `http://127.0.0.1:5001/reservations/${id}/update`;
+      const response = await fetch(url, requestOptionsUpdate);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSearch = (event) => {
@@ -56,7 +62,7 @@ const UpdateReservation = () => {
 
   const submitUpdateReservation = (event) => {
     event.preventDefault();
-    updateReservation();
+    updateReservation(resID);
   };
 
   const handleResIDChange = (event) => {
@@ -104,7 +110,7 @@ const UpdateReservation = () => {
             <label className="col-md-3">Arrival</label>
             <input
               className="col-md-9"
-              value={start}
+              value={start.substring(0, 10)}
               onChange={handleStartChange}
             ></input>
           </div>
@@ -112,7 +118,7 @@ const UpdateReservation = () => {
             <label className="col-md-3">Departure</label>
             <input
               className="col-md-9"
-              value={end}
+              value={end.substring(0, 10)}
               onChange={handleEndChange}
             ></input>
           </div>
@@ -120,7 +126,7 @@ const UpdateReservation = () => {
             <label className="col-md-3">Rooms</label>
             <input
               className="col-md-9"
-              defaultValue={rms}
+              value={rms}
               onChange={handleRmsChange}
             ></input>
           </div>
@@ -128,7 +134,7 @@ const UpdateReservation = () => {
             <label className="col-md-3">First Name</label>
             <input
               className="col-md-9"
-              defaultValue={first}
+              value={first}
               onChange={handleFirstChange}
             ></input>
           </div>
@@ -136,20 +142,17 @@ const UpdateReservation = () => {
             <label className="col-md-3">Last Name</label>
             <input
               className="col-md-9"
-              defaultValue={last}
+              value={last}
               onChange={handleLastChange}
             ></input>
           </div>
           <div className="row">
-            <div className="col-md-4"></div>
+            <div className="col-md-8"></div>
             <button type="submit" className="col-md-2 btn">
               Update
             </button>
             <button type="button" className="col-md-2 btn">
-              Undo
-            </button>
-            <button type="button" className="col-md-4 btn">
-              Cancel Reservation
+              Cancel
             </button>
           </div>
         </form>

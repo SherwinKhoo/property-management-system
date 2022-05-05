@@ -56,12 +56,56 @@ const Arrivals = () => {
       rooms: rms,
       firstName: first,
       lastName: last,
+      isCancelled: cancel,
+      isCheckedIn: checkInOut,
     }),
   };
 
   const updateReservation = async () => {
     const url = `http://127.0.0.1:5001/reservations/${resID}/update`;
     const response = await fetch(url, requestOptionsUpdate);
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const requestOptionsUpdateAndCheckIn = {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      startDate: start,
+      endDate: end,
+      rooms: rms,
+      firstName: first,
+      lastName: last,
+      isCancelled: cancel,
+      isCheckedIn: checkInOut,
+    }),
+  };
+
+  const updateReservationAndCheckIn = async () => {
+    const url = `http://127.0.0.1:5001/reservations/${resID}/update`;
+    const response = await fetch(url, requestOptionsUpdateAndCheckIn);
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const requestOptionsUpdateAndCancel = {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      startDate: start,
+      endDate: end,
+      rooms: rms,
+      firstName: first,
+      lastName: last,
+      isCancelled: true,
+      isCheckedIn: false,
+    }),
+  };
+
+  const updateReservationAndCancel = async () => {
+    const url = `http://127.0.0.1:5001/reservations/${resID}/update`;
+    const response = await fetch(url, requestOptionsUpdateAndCancel);
     const data = await response.json();
     console.log(data);
   };
@@ -94,8 +138,24 @@ const Arrivals = () => {
 
   const handleResIDSearch = (event) => {
     event.preventDefault();
-    console.log("asdfg");
     searchReservation(event.target.innerText);
+  };
+
+  const submitUpdateReservation = (event) => {
+    event.preventDefault();
+    updateReservation();
+  };
+
+  const submitUpdateReservationAndCheckIn = (event) => {
+    // setCheckInOut(true);
+    event.preventDefault();
+    updateReservationAndCheckIn();
+  };
+
+  const submitUpdateReservationAndCancel = (event) => {
+    // setCancel(true);
+    event.preventDefault();
+    updateReservationAndCancel();
   };
 
   const arrivalList = arrivals.map((list, index) => {
@@ -174,11 +234,26 @@ const Arrivals = () => {
             ></input>
           </div>
           <div className="row">
-            <div className="col-md-8"></div>
-            <button type="submit" className="col-md-2 btn">
+            <div className="col-md-6"></div>
+            <button
+              type="button"
+              onClick={submitUpdateReservationAndCheckIn}
+              className="col-md-2 btn"
+            >
               Check-In
             </button>
-            <button type="button" className="col-md-2 btn">
+            <button
+              type="button"
+              onClick={submitUpdateReservation}
+              className="col-md-2 btn"
+            >
+              Update
+            </button>
+            <button
+              type="button"
+              onClick={submitUpdateReservationAndCancel}
+              className="col-md-2 btn"
+            >
               Cancel
             </button>
           </div>

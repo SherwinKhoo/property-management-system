@@ -92,12 +92,9 @@ const NewReservation = () => {
           <input className="col-md-9" onChange={handleLastChange}></input>
         </div>
         <div className="row">
-          <div className="col-md-8"></div>
+          <div className="col-md-10"></div>
           <button type="submit" className="col-md-2 btn">
             Submit
-          </button>
-          <button type="button" className="col-md-2 btn">
-            Cancel
           </button>
         </div>
       </form>

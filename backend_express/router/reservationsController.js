@@ -54,6 +54,8 @@ router.put("/:id/update", async (req, res) => {
         rooms: req.body.rooms,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        isCancelled: req.body.isCancelled,
+        isCheckedIn: req.body.isCheckedIn,
       }
     );
     console.log(modifyReservation);
