@@ -35,7 +35,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/blocks"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"
@@ -47,7 +47,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/profiles"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"
@@ -59,7 +59,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/room-plan"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"
@@ -71,7 +71,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/floor-plan"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"
@@ -83,7 +83,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/confirmation"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"
@@ -95,7 +95,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/registration_cards"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"
@@ -107,7 +107,7 @@ const NavBarReservations = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/calendar"
+              to="/reservations-under-construction"
             >
               <img
                 className="leftNav"

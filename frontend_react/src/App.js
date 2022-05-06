@@ -7,6 +7,8 @@ import NavBarApp from "./components/navigation/NavBarApp";
 // import UpdateReservation from "./components/reservations/UpdateReservation";
 // import FrontDesk from "./components/front_desk/FrontDesk";
 // import InHouseGuests from "./components/front_desk/InHouseGuests";
+// import ReservationsUnderConstruction from "./components/reservations/ReservationsUnderConstruction";
+// import FrontDeskUnderConstruction from "./components/front_desk/FrontDeskUnderConstruction";
 
 const Reservations = React.lazy(() =>
   import("./components/reservations/Reservations")
@@ -21,6 +23,12 @@ const FrontDesk = React.lazy(() => import("./components/front_desk/FrontDesk"));
 const Arrivals = React.lazy(() => import("./components/front_desk/Arrivals"));
 const InHouseGuests = React.lazy(() =>
   import("./components/front_desk/InHouseGuests")
+);
+const ReservationsUnderConstruction = React.lazy(() =>
+  import("./components/reservations/ReservationsUnderConstruction")
+);
+const FrontDeskUnderConstruction = React.lazy(() =>
+  import("./components/front_desk/FrontDeskUnderConstruction")
 );
 
 const App = () => {
@@ -38,6 +46,14 @@ const App = () => {
           <Route path="/front-desk" element={<FrontDesk />} />
           <Route path="/arrivals" element={<Arrivals />} />
           <Route path="/inhouse-guests" element={<InHouseGuests />} />
+          <Route
+            path="/reservations-under-construction"
+            element={<ReservationsUnderConstruction />}
+          />
+          <Route
+            path="/front-desk-under-construction"
+            element={<FrontDeskUnderConstruction />}
+          />
         </Routes>
       </Suspense>
     </div>

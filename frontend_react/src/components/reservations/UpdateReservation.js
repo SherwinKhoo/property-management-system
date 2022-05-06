@@ -55,6 +55,19 @@ const UpdateReservation = () => {
     }
   };
 
+  const requestOptionsDelete = {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+  };
+
+  const deleteReservation = async (id) => {
+    try {
+      const url = `http://127.0.0.1:5001/reservations/${id}/delete`;
+      const response = await fetch(url, requestOptionsDelete);
+      const data = await response.json();
+    } catch (error) {}
+  };
+
   const handleSearch = (event) => {
     event.preventDefault();
     searchReservation(resID);
@@ -87,6 +100,11 @@ const UpdateReservation = () => {
 
   const handleLastChange = (event) => {
     setLast(event.target.value);
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    deleteReservation(resID);
   };
 
   return (
@@ -151,8 +169,12 @@ const UpdateReservation = () => {
             <button type="submit" className="col-md-2 btn">
               Update
             </button>
-            <button type="button" className="col-md-2 btn">
-              Cancel
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="col-md-2 btn"
+            >
+              Delete
             </button>
           </div>
         </form>

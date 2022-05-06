@@ -8,6 +8,7 @@ router.get("/arrivals/:date", async (req, res) => {
   try {
     const findArrivals = await Reservations.find({
       startDate: `${req.params.date}T00:00:00.000+00:00`,
+      isCheckIn: false,
     }).sort({ lastName: +1 });
     res.json(findArrivals);
   } catch (error) {
@@ -74,7 +75,6 @@ router.put("/:id/checkin", async (req, res) => {
 
 // search for inhouse
 router.get("/inhouse", async (req, res) => {
-  console.log("backend called");
   try {
     const findInHouse = await Reservations.find({
       isCheckedIn: true,
@@ -143,51 +143,56 @@ router.get("/seed", async (req, res) => {
       reservationID: "r0000001",
       startDate: "2022-05-01",
       endDate: "2022-05-06",
-      rooms: [101, 201],
-      payments: [100, 200, 100, 200, 100, 200, 100, 200, 100, 200],
+      rooms: [101],
+      payments: [100, 100, 100, 100, 100],
       //   userEmail: "guest1@email.com",
       firstName: "Guest1",
       lastName: "One",
+      isCheckIn: true,
     },
     {
       reservationID: "r0000002",
       startDate: "2022-05-02",
       endDate: "2022-05-07",
-      rooms: [102, 202],
-      payments: [100, 200, 100, 200, 100, 200, 100, 200],
+      rooms: [102],
+      payments: [100, 100, 100, 100],
       //   userEmail: "guest2@email.com",
       firstName: "Guest2",
       lastName: "Two",
+      isCheckIn: true,
     },
     {
       reservationID: "r0000003",
       startDate: "2022-05-03",
       endDate: "2022-05-08",
-      rooms: [103, 203],
-      payments: [100, 200, 100, 200, 100, 200],
+      rooms: [103],
+      payments: [100, 100, 100],
       //   userEmail: "guest3@email.com",
       firstName: "Guest3",
       lastName: "Three",
+      isCheckIn: true,
     },
     {
       reservationID: "r0000004",
       startDate: "2022-05-04",
       endDate: "2022-05-09",
-      rooms: [104, 204],
-      payments: [100, 200, 100, 200],
+      rooms: [104],
+      payments: [100, 100],
       //   userEmail: "guest4@email.com",
       firstName: "Guest4",
       lastName: "Four",
+      isCheckIn: true,
     },
     {
       reservationID: "r0000005",
       startDate: "2022-05-05",
       endDate: "2022-05-10",
       rooms: [105, 205],
-      payments: [100, 200],
+      payments: [100],
       //   userEmail: "guest5@email.com",
       firstName: "Guest5",
       lastName: "Five",
+      isCheckIn: true,
     },
   ];
 

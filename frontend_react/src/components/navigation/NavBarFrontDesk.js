@@ -23,7 +23,7 @@ const NavBarApp = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/queue_reservations"
+              to="/front-desk-under-construction"
             >
               <img
                 className="leftNav"
@@ -47,7 +47,7 @@ const NavBarApp = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/accounts"
+              to="/front-desk-under-construction"
             >
               <img
                 className="leftNav"
@@ -59,7 +59,7 @@ const NavBarApp = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/room-assignment"
+              to="/front-desk-under-construction"
             >
               <img
                 className="leftNav"
@@ -71,7 +71,7 @@ const NavBarApp = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/messages"
+              to="/front-desk-under-construction"
             >
               <img
                 className="leftNav"
@@ -83,7 +83,7 @@ const NavBarApp = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/traces"
+              to="/front-desk-under-construction"
             >
               <img
                 className="leftNav"
@@ -95,7 +95,7 @@ const NavBarApp = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/wakeup-calls"
+              to="/front-desk-under-construction"
             >
               <img
                 className="leftNav"
