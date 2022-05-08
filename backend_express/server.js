@@ -38,9 +38,11 @@ mongoose.connection.once("open", () => {
 const usersController = require("./router/usersController.js");
 const reservationsController = require("./router/reservationsController.js");
 const sessionsController = require("./router/sessionsController.js");
+const roomsController = require("./router/roomsController.js");
 app.use("/users", usersController);
 app.use("/reservations", reservationsController);
 app.use("/sessions", sessionsController);
+app.use("/rooms", roomsController);
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
