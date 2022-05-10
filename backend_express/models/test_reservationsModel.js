@@ -18,15 +18,25 @@ const reservationsSchema = Schema({
       guest1: {
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
-        address: { type: String, required: true },
         NRIC_FIN: { type: String, required: true },
+        contact: { type: Number, require: true },
+        email: { type: String, required: true },
+        address: { type: String },
       },
       guest2: {
         firstName: { type: String },
         lastName: { type: String },
-        address: { type: String },
         NRIC_FIN: { type: String },
+        contact: { type: Number },
+        email: { type: String },
+        address: { type: String },
       },
+      traces: [
+        {
+          date: { type: Date, required: true },
+          description: { type: String, required: true },
+        },
+      ],
       isCancelled: { type: Boolean, required: true },
       isCheckedIn: { type: Boolean, required: true },
     },
