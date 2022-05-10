@@ -8,7 +8,7 @@ router.get("/arrivals/:date", async (req, res) => {
   try {
     const findArrivals = await Reservations.find({
       startDate: `${req.params.date}T00:00:00.000+00:00`,
-      isCheckIn: false,
+      isCheckedIn: false,
     }).sort({ lastName: +1 });
     res.json(findArrivals);
   } catch (error) {
